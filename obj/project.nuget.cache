@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "yGjxI7vPfQq8zWaEuv+8wUNwK/bhTzz2MpF5whfbiUdilcSl3UFQY4Htvg5v0thsG3gjxenQsSNLl1vqo1INgg==",
+  "success": true,
+  "projectFilePath": "/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/full-stack-dev-tech.csproj",
+  "expectedPackageFiles": [
+    "/Users/freddy/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/Users/freddy/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/freddy/.nuget/packages/swashbuckle.aspnetcore/5.6.3/swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "/Users/freddy/.nuget/packages/swashbuckle.aspnetcore.swagger/5.6.3/swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "/Users/freddy/.nuget/packages/swashbuckle.aspnetcore.swaggergen/5.6.3/swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "/Users/freddy/.nuget/packages/swashbuckle.aspnetcore.swaggerui/5.6.3/swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
