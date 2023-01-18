@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "full_stack_dev_tech": {
+    "FullStackDev": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

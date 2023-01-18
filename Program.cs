@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace full_stack_dev_tech
+namespace FullStackDev
 {
     public class Program
     {
