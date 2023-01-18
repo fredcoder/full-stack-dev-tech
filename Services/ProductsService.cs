@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FullStackDev.Context;
 using FullStackDev.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace FullStackDev.Services
@@ -23,7 +24,8 @@ namespace FullStackDev.Services
             var product = new Product();
             await Task.Run(() =>
             {
-                product = _webApiContext.Products.FirstOrDefault(p => p.Id.ToString() == id);
+                product = _webApiContext.Products.Include(p => p.ProductType)
+                                                 .FirstOrDefault(p => p.Id.ToString() == id);
             });
             return product;
         }
@@ -33,7 +35,8 @@ namespace FullStackDev.Services
             var products = new List<Product>();
             await Task.Run(() =>
             {
-                products = _webApiContext.Products.ToList();
+                products = _webApiContext.Products.Include(p => p.ProductType)
+                                                  .ToList();
             });
             return products;
         }
@@ -59,8 +62,8 @@ namespace FullStackDev.Services
                 product = _webApiContext.Products.FirstOrDefault(p => p.Id.ToString() == id);
                 product.Name = newProduct.Name;
                 product.Price = newProduct.Price;
-                product.Type = newProduct.Type;
                 product.Active = newProduct.Active;
+                product.ProductTypeId = newProduct.ProductTypeId;
                 _webApiContext.SaveChangesAsync();
                 _logger.LogInformation("Updated: {id}", product.Id);
             });
