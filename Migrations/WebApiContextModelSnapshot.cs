@@ -23,16 +23,18 @@ namespace FullStackDev.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("Active")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
                     b.Property<string>("ProductTypeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -44,40 +46,40 @@ namespace FullStackDev.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7087d279-0d0d-40f2-8521-7594cd4085f0",
-                            Active = true,
+                            Id = "f6095b43-57f1-49a7-9acf-ac3d145fef4f",
+                            IsActive = true,
                             Name = "Don Quixote",
                             Price = 12f,
                             ProductTypeId = "b00db9eb-7650-4878-b814-8a96d5a8220e"
                         },
                         new
                         {
-                            Id = "bb904871-2627-404d-809d-aec7e60bbe40",
-                            Active = true,
+                            Id = "cf994cb1-dc3c-4822-93f7-a7422a016ca9",
+                            IsActive = true,
                             Name = "Microwave",
                             Price = 30f,
                             ProductTypeId = "f30e74cd-2494-4fc8-8eb3-8de05c4a821e"
                         },
                         new
                         {
-                            Id = "5cbaed4e-4a9e-495e-9dd1-310d931156c3",
-                            Active = true,
+                            Id = "50909b94-5134-4392-be80-13bcccd2086c",
+                            IsActive = true,
                             Name = "Pizza",
                             Price = 15f,
                             ProductTypeId = "070e30e7-488b-47e3-ad28-4379b9be6185"
                         },
                         new
                         {
-                            Id = "83cdb933-1daa-40d2-be0f-bde9810510b1",
-                            Active = true,
+                            Id = "7caba613-eaa2-4c83-9d47-97b438169f95",
+                            IsActive = true,
                             Name = "Chair",
                             Price = 25f,
                             ProductTypeId = "74ca9e4c-2f51-4bfb-8ee0-12efe0db187f"
                         },
                         new
                         {
-                            Id = "75a248e1-91a0-4698-bf57-616567cf6e08",
-                            Active = true,
+                            Id = "7a852c93-ca4f-4ab5-84ac-c8b70927506e",
+                            IsActive = true,
                             Name = "Lego",
                             Price = 30f,
                             ProductTypeId = "d6d124a9-df5b-4ae8-848d-d15bb33bbd19"
@@ -128,7 +130,9 @@ namespace FullStackDev.Migrations
                 {
                     b.HasOne("FullStackDev.Models.ProductType", "ProductType")
                         .WithMany()
-                        .HasForeignKey("ProductTypeId");
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ProductType");
                 });

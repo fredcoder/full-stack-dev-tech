@@ -32,11 +32,11 @@ namespace FullStackDev.Context
             builder.Entity<ProductType>().ToTable("ProductType").HasData(productTypes);
 
             List<Product> products = new List<Product>();
-            products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Don Quixote", Price = 12.00F, ProductTypeId = productTypes[0].Id, Active = true });
-            products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Microwave", Price = 30.00F, ProductTypeId = productTypes[1].Id, Active = true });
-            products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Pizza", Price = 15.00F, ProductTypeId = productTypes[2].Id, Active = true });
-            products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Chair", Price = 25.00F, ProductTypeId = productTypes[3].Id, Active = true });
-            products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Lego", Price = 30.00F, ProductTypeId = productTypes[4].Id, Active = true });
+            products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Don Quixote", Price = 12.00F, ProductTypeId = productTypes[0].Id, IsActive = true });
+            products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Microwave", Price = 30.00F, ProductTypeId = productTypes[1].Id, IsActive = true });
+            products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Pizza", Price = 15.00F, ProductTypeId = productTypes[2].Id, IsActive = true });
+            products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Chair", Price = 25.00F, ProductTypeId = productTypes[3].Id, IsActive = true });
+            products.Add(new Product { Id = Guid.NewGuid().ToString(), Name = "Lego", Price = 30.00F, ProductTypeId = productTypes[4].Id, IsActive = true });
 
 
             builder.Entity<Product>().ToTable("Product").HasKey(p => p.Id);

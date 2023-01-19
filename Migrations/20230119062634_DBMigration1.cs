@@ -2,7 +2,7 @@
 
 namespace FullStackDev.Migrations
 {
-    public partial class DBMigration : Migration
+    public partial class DBMigration1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,11 +23,10 @@ namespace FullStackDev.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false),
-                    TypeId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Active = table.Column<bool>(type: "bit", nullable: false),
-                    ProductTypeId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    ProductTypeId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,19 +36,7 @@ namespace FullStackDev.Migrations
                         column: x => x.ProductTypeId,
                         principalTable: "ProductType",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Product",
-                columns: new[] { "Id", "Active", "Name", "Price", "ProductTypeId", "TypeId" },
-                values: new object[,]
-                {
-                    { "0d039ad9-4c3d-49ca-9966-7b893e8d0944", true, "Books", 10f, null, "b00db9eb-7650-4878-b814-8a96d5a8220e" },
-                    { "28ce8f23-6943-4f5f-af3b-73de3143751e", true, "Electronics", 10f, null, "f30e74cd-2494-4fc8-8eb3-8de05c4a821e" },
-                    { "adae976f-8781-4f91-91a8-12cb2ca412cf", true, "Food", 10f, null, "070e30e7-488b-47e3-ad28-4379b9be6185" },
-                    { "43b11ab4-16ac-47d3-8ede-5b9f49ae04e3", true, "Furniture", 10f, null, "74ca9e4c-2f51-4bfb-8ee0-12efe0db187f" },
-                    { "cad4b686-4b76-4818-8f80-ef2fb8c0a811", true, "Toys", 10f, null, "d6d124a9-df5b-4ae8-848d-d15bb33bbd19" }
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -62,6 +49,18 @@ namespace FullStackDev.Migrations
                     { "070e30e7-488b-47e3-ad28-4379b9be6185", "Food" },
                     { "74ca9e4c-2f51-4bfb-8ee0-12efe0db187f", "Furniture" },
                     { "d6d124a9-df5b-4ae8-848d-d15bb33bbd19", "Toys" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Product",
+                columns: new[] { "Id", "IsActive", "Name", "Price", "ProductTypeId" },
+                values: new object[,]
+                {
+                    { "f6095b43-57f1-49a7-9acf-ac3d145fef4f", true, "Don Quixote", 12f, "b00db9eb-7650-4878-b814-8a96d5a8220e" },
+                    { "cf994cb1-dc3c-4822-93f7-a7422a016ca9", true, "Microwave", 30f, "f30e74cd-2494-4fc8-8eb3-8de05c4a821e" },
+                    { "50909b94-5134-4392-be80-13bcccd2086c", true, "Pizza", 15f, "070e30e7-488b-47e3-ad28-4379b9be6185" },
+                    { "7caba613-eaa2-4c83-9d47-97b438169f95", true, "Chair", 25f, "74ca9e4c-2f51-4bfb-8ee0-12efe0db187f" },
+                    { "7a852c93-ca4f-4ab5-84ac-c8b70927506e", true, "Lego", 30f, "d6d124a9-df5b-4ae8-848d-d15bb33bbd19" }
                 });
 
             migrationBuilder.CreateIndex(

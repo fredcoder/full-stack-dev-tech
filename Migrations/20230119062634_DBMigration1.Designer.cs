@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FullStackDev.Migrations
 {
     [DbContext(typeof(WebApiContext))]
-    [Migration("20230118073240_DBMigration2")]
-    partial class DBMigration2
+    [Migration("20230119062634_DBMigration1")]
+    partial class DBMigration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,20 +25,19 @@ namespace FullStackDev.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("Active")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
                     b.Property<string>("ProductTypeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("TypeId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -49,43 +48,43 @@ namespace FullStackDev.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a1e84b44-6944-4f27-af9b-15e3c935faee",
-                            Active = true,
+                            Id = "f6095b43-57f1-49a7-9acf-ac3d145fef4f",
+                            IsActive = true,
                             Name = "Don Quixote",
                             Price = 12f,
-                            TypeId = "b00db9eb-7650-4878-b814-8a96d5a8220e"
+                            ProductTypeId = "b00db9eb-7650-4878-b814-8a96d5a8220e"
                         },
                         new
                         {
-                            Id = "2210eb18-7a6a-4845-bd1d-6f137450a06e",
-                            Active = true,
+                            Id = "cf994cb1-dc3c-4822-93f7-a7422a016ca9",
+                            IsActive = true,
                             Name = "Microwave",
                             Price = 30f,
-                            TypeId = "f30e74cd-2494-4fc8-8eb3-8de05c4a821e"
+                            ProductTypeId = "f30e74cd-2494-4fc8-8eb3-8de05c4a821e"
                         },
                         new
                         {
-                            Id = "44604cfa-6597-470c-a838-ecb7cf1f1e62",
-                            Active = true,
+                            Id = "50909b94-5134-4392-be80-13bcccd2086c",
+                            IsActive = true,
                             Name = "Pizza",
                             Price = 15f,
-                            TypeId = "070e30e7-488b-47e3-ad28-4379b9be6185"
+                            ProductTypeId = "070e30e7-488b-47e3-ad28-4379b9be6185"
                         },
                         new
                         {
-                            Id = "895d5bdc-6a3c-4a23-8d03-67085184d35c",
-                            Active = true,
+                            Id = "7caba613-eaa2-4c83-9d47-97b438169f95",
+                            IsActive = true,
                             Name = "Chair",
                             Price = 25f,
-                            TypeId = "74ca9e4c-2f51-4bfb-8ee0-12efe0db187f"
+                            ProductTypeId = "74ca9e4c-2f51-4bfb-8ee0-12efe0db187f"
                         },
                         new
                         {
-                            Id = "ea1520ad-4d65-42ad-831f-13450c149787",
-                            Active = true,
+                            Id = "7a852c93-ca4f-4ab5-84ac-c8b70927506e",
+                            IsActive = true,
                             Name = "Lego",
                             Price = 30f,
-                            TypeId = "d6d124a9-df5b-4ae8-848d-d15bb33bbd19"
+                            ProductTypeId = "d6d124a9-df5b-4ae8-848d-d15bb33bbd19"
                         });
                 });
 
@@ -133,7 +132,9 @@ namespace FullStackDev.Migrations
                 {
                     b.HasOne("FullStackDev.Models.ProductType", "ProductType")
                         .WithMany()
-                        .HasForeignKey("ProductTypeId");
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ProductType");
                 });

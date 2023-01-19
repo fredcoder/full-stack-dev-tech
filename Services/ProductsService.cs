@@ -25,7 +25,7 @@ namespace FullStackDev.Services
             await Task.Run(() =>
             {
                 product = _webApiContext.Products.Include(p => p.ProductType)
-                                                 .FirstOrDefault(p => p.Id.ToString() == id);
+                                                 .FirstOrDefault(p => p.Id == id);
             });
             return product;
         }
@@ -47,9 +47,9 @@ namespace FullStackDev.Services
             await Task.Run(() =>
             {
                 var newProduct = _webApiContext.Products.AddAsync(product);
-                _webApiContext.SaveChangesAsync();
                 _logger.LogInformation("Added: {newProduct}", newProduct.ToString());
             });
+            _webApiContext.SaveChanges();
 
             return product;
         }
@@ -59,14 +59,15 @@ namespace FullStackDev.Services
             var product = new Product();
             await Task.Run(() =>
             {
-                product = _webApiContext.Products.FirstOrDefault(p => p.Id.ToString() == id);
+                product = _webApiContext.Products.FirstOrDefault(p => p.Id == id);
                 product.Name = newProduct.Name;
                 product.Price = newProduct.Price;
-                product.Active = newProduct.Active;
+                product.IsActive = newProduct.IsActive;
                 product.ProductTypeId = newProduct.ProductTypeId;
-                _webApiContext.SaveChangesAsync();
                 _logger.LogInformation("Updated: {id}", product.Id);
             });
+            _webApiContext.SaveChanges();
+
             return product;
         }
 
@@ -75,11 +76,11 @@ namespace FullStackDev.Services
             var product = new Product();
             await Task.Run(() =>
             {
-                product = _webApiContext.Products.FirstOrDefault(p => p.Id.ToString() == id);
+                product = _webApiContext.Products.FirstOrDefault(p => p.Id == id);
                 var oldProduct = _webApiContext.Products.Remove(product);
-                _webApiContext.SaveChangesAsync();
                 _logger.LogInformation("Deleted: {oldProduct}", oldProduct);
             });
+            _webApiContext.SaveChanges();
         }
     }
 }
