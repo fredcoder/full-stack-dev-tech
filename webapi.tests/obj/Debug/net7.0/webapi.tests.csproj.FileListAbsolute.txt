@@ -149,3 +149,14 @@
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/webapi.tests.pdb
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/obj/Debug/net7.0/webapi.tests.genruntimeconfig.cache
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/obj/Debug/net7.0/ref/webapi.tests.dll
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/publish/appsettings.Development.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/publish/appsettings.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/publish/global.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/publish/publish/appsettings.Development.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/publish/publish/appsettings.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/publish/publish/global.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/publish/publish/webapi.deps.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/publish/publish/webapi.runtimeconfig.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/publish/webapi.deps.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/publish/webapi.runtimeconfig.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net7.0/webapi.StaticWebAssets.xml

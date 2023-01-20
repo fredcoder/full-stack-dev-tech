@@ -15,6 +15,7 @@ namespace webapi.Services
         public ProductsService(WebApiContext context)
         {
             _webApiContext = context;
+            _webApiContext.Database.EnsureCreated();
         }
 
         public async Task<Product> GetProduct(string id)
