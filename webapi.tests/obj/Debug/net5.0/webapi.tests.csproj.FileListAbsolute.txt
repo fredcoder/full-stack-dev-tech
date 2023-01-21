@@ -149,3 +149,4 @@
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/obj/Debug/net5.0/webapi.tests.pdb
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/obj/Debug/net5.0/webapi.tests.genruntimeconfig.cache
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/obj/Debug/net5.0/ref/webapi.tests.dll
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi.tests/bin/Debug/net5.0/webapi.StaticWebAssets.xml

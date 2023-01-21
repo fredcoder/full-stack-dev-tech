@@ -9,5 +9,6 @@ namespace webapi.Services
     public interface IProductTypesService
     {
         public Task<ProductType> GetProductType(string id);
+        public Task<List<ProductType>> GetProductTypes();
     }
 }

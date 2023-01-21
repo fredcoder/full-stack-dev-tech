@@ -27,5 +27,15 @@ namespace webapi.Services
             });
             return productType;
         }
+
+        public async Task<List<ProductType>> GetProductTypes()
+        {
+            var productTypes = new List<ProductType>();
+            await Task.Run(() =>
+            {
+                productTypes = _webApiContext.ProductTypes.ToList();
+            });
+            return productTypes;
+        }
     }
 }

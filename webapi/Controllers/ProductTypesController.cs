@@ -20,11 +20,24 @@ namespace webapi.Controllers
             _productTypesService = productTypesService;
         }
 
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ProductType>>> Get()
+        {
+            var productTypes = await _productTypesService.GetProductTypes();
+            return Ok(productTypes);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductType>> Get(string id)
         {
-            return await _productTypesService.GetProductType(id);
+            var productType = await _productTypesService.GetProductType(id);
+            if (productType == null)
+            {
+                return NotFound();
+            }
+            return Ok(productType);
         }
-
     }
+
 }

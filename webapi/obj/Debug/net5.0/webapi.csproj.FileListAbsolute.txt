@@ -66,10 +66,5 @@
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/bin/Debug/net5.0/publish/global.json
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/bin/Debug/net5.0/publish/webapi.deps.json
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/bin/Debug/net5.0/publish/webapi.runtimeconfig.json
-/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/bin/Debug/net5.0/webapi
-/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/obj/Debug/net5.0/staticwebassets/webapi.StaticWebAssets.Pack.cache
-/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/obj/Debug/net5.0/staticwebassets/msbuild.webapi.Microsoft.AspNetCore.StaticWebAssets.props
-/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/obj/Debug/net5.0/staticwebassets/msbuild.build.webapi.props
-/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/obj/Debug/net5.0/staticwebassets/msbuild.buildMultiTargeting.webapi.props
-/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/obj/Debug/net5.0/staticwebassets/msbuild.buildTransitive.webapi.props
-/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/obj/Debug/net5.0/refint/webapi.dll
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/bin/Debug/net5.0/ref/webapi.dll
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/obj/Debug/net5.0/staticwebassets/webapi.StaticWebAssets.xml
