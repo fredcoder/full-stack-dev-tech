@@ -1,3 +1,11 @@
+## webapi
+
+# obj
+webapi/obj
+webapi.tests/obj
+
+## client app
+
 # dependencies
 client/node_modules
 client/.pnp
