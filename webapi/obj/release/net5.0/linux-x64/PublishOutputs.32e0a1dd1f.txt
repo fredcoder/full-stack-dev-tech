@@ -2,6 +2,11 @@
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/appsettings.Development.json
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/appsettings.json
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/global.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/publish/appsettings.Development.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/publish/appsettings.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/publish/global.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/publish/webapi.deps.json
+/Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/publish/webapi.runtimeconfig.json
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/webapi.dll
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/webapi.runtimeconfig.json
 /Users/freddy/Documents/CODE/LEARNING/full-stack-dev-tech/webapi/publish/webapi.pdb
