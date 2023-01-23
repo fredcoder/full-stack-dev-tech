@@ -58,14 +58,14 @@ const EditProductPage = () => {
   const isValidForm = () => {
     let isValid = true;
 
-    let errors: ProductErrors = PRODUCT_ERRORS_INITIAL_STATE;
+    let errors: ProductErrors = { ...PRODUCT_ERRORS_INITIAL_STATE };
     for (const [key, value] of Object.entries(productForm)) {
       if (value === null || value === '') {
         errors[key as keyof ProductErrors] = 'This field is required';
         isValid = !isValid;
       }
     }
-    setProductFormErrors(errors);
+    setProductFormErrors({ ...PRODUCT_ERRORS_INITIAL_STATE, ...errors });
     return isValid;
   };
 

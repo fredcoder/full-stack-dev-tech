@@ -10,6 +10,8 @@ import {
   PUT_PRODUCT,
   PUT_PRODUCT_ERROR,
   CLEAR_STATE,
+  DELETE_PRODUCT,
+  DELETE_PRODUCT_ERROR,
 } from '../../global/constants';
 import { ProductInputs } from '../../global/types';
 
@@ -91,6 +93,27 @@ export const putProduct = (productInputs: ProductInputs) => {
       .catch((error) => {
         dispatch({
           type: PUT_PRODUCT_ERROR,
+          payload: error.response.data,
+        });
+      });
+  };
+};
+
+export const deleteProduct = (id: string) => {
+  return async (
+    dispatch: (arg0: { type: string; payload: { data: object } }) => void
+  ) => {
+    return axios
+      .delete(`${API_BASE}/Products/${id}`)
+      .then((response) => {
+        dispatch({
+          type: DELETE_PRODUCT,
+          payload: response.data,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: DELETE_PRODUCT_ERROR,
           payload: error.response.data,
         });
       });

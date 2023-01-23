@@ -8,6 +8,8 @@ import {
   PUT_PRODUCT,
   PUT_PRODUCT_ERROR,
   CLEAR_STATE,
+  DELETE_PRODUCT,
+  DELETE_PRODUCT_ERROR,
 } from '../../global/constants';
 import { Action } from '../../global/types';
 
@@ -68,6 +70,18 @@ const reducer = (state = INITIAL_STATE, action: Action) => {
         ...state,
         productError: action.payload,
         isProductUpdated: false,
+      };
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        product: action.payload,
+        isProductDeleted: true,
+      };
+    case DELETE_PRODUCT_ERROR:
+      return {
+        ...state,
+        productError: action.payload,
+        isProductDeleted: false,
       };
     case CLEAR_STATE:
       return {
