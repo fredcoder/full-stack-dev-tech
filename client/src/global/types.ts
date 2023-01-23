@@ -24,3 +24,9 @@ export type ProductInputs = {
   isActive: boolean;
   productTypeId: string;
 };
+
+export type ProductErrors = {
+  name: string;
+  price: string;
+  productTypeId: string;
+};

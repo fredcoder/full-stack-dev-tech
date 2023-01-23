@@ -1,10 +1,15 @@
 import axios from 'axios';
-import { API_BASE, CLEAR_STATE } from '../../global/constants';
 import {
+  API_BASE,
   GET_PRODUCTS,
   GET_PRODUCTS_ERROR,
+  GET_PRODUCT,
+  GET_PRODUCT_ERROR,
   POST_PRODUCT,
   POST_PRODUCT_ERROR,
+  PUT_PRODUCT,
+  PUT_PRODUCT_ERROR,
+  CLEAR_STATE,
 } from '../../global/constants';
 import { ProductInputs } from '../../global/types';
 
@@ -29,6 +34,27 @@ export const getProducts = () => {
   };
 };
 
+export const getProduct = (id: string) => {
+  return async (
+    dispatch: (arg0: { type: string; payload: { data: object } }) => void
+  ) => {
+    return axios
+      .get(`${API_BASE}/Products/${id}`)
+      .then((response) => {
+        dispatch({
+          type: GET_PRODUCT,
+          payload: response.data,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: GET_PRODUCT_ERROR,
+          payload: error.response.data,
+        });
+      });
+  };
+};
+
 export const postProduct = (productInputs: ProductInputs) => {
   return async (
     dispatch: (arg0: { type: string; payload: { data: object } }) => void
@@ -44,6 +70,27 @@ export const postProduct = (productInputs: ProductInputs) => {
       .catch((error) => {
         dispatch({
           type: POST_PRODUCT_ERROR,
+          payload: error.response.data,
+        });
+      });
+  };
+};
+
+export const putProduct = (productInputs: ProductInputs) => {
+  return async (
+    dispatch: (arg0: { type: string; payload: { data: object } }) => void
+  ) => {
+    return axios
+      .put(`${API_BASE}/Products/${productInputs.id}`, productInputs)
+      .then((response) => {
+        dispatch({
+          type: PUT_PRODUCT,
+          payload: response.data,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: PUT_PRODUCT_ERROR,
           payload: error.response.data,
         });
       });

@@ -10,38 +10,42 @@ import {
 } from '../../global/types';
 import { useForm } from 'react-hook-form';
 import { getProductTypes } from '../../redux/actions/productTypes.action';
-import { postProduct } from '../../redux/actions/products.action';
-import { useNavigate } from 'react-router-dom';
-import {
-  PRODUCT_ERRORS_INITIAL_STATE,
-  PRODUCT_INITIAL_STATE,
-} from '../../global/constants';
+import { getProduct, putProduct } from '../../redux/actions/products.action';
+import { useMatches, useNavigate } from 'react-router-dom';
+import { PRODUCT_ERRORS_INITIAL_STATE } from '../../global/constants';
 
-const AddProductPage = () => {
+const EditProductPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const matches = useMatches();
+  const id = `${matches[0].params.id}`;
   const { register, handleSubmit } = useForm<ProductInputs>();
 
-  const isProductCreated = useSelector(
-    (store: any) => store.productsReducer.isProductCreated
+  const { isProductUpdated, product, isProductLoaded } = useSelector(
+    (store: any) => store.productsReducer
   );
   const productTypes = useSelector(
     (store: any) => store.productTypesReducer.productTypes
   );
 
-  const [productForm, setProductForm] = useState<ProductInputs>(
-    PRODUCT_INITIAL_STATE
-  );
+  const [productForm, setProductForm] = useState<Product>(product);
   const [productFormErrors, setProductFormErrors] = useState<ProductErrors>(
     PRODUCT_ERRORS_INITIAL_STATE
   );
 
   useEffect(() => {
+    dispatch(getProduct(id));
     dispatch(getProductTypes());
-    if (isProductCreated) {
+  }, [dispatch, id]);
+
+  useEffect(() => {
+    if (isProductLoaded) {
+      setProductForm(product);
+    }
+    if (isProductUpdated) {
       navigate('/');
     }
-  }, [dispatch, isProductCreated, navigate]);
+  }, [isProductUpdated, isProductLoaded, product, navigate]);
 
   const onChangeInput = (key: keyof Product, value: string | boolean) => {
     setProductFormErrors(PRODUCT_ERRORS_INITIAL_STATE);
@@ -67,13 +71,17 @@ const AddProductPage = () => {
 
   const onSubmit = () => {
     if (isValidForm()) {
-      dispatch(postProduct(productForm));
+      dispatch(putProduct(productForm));
     }
   };
 
+  if (!isProductLoaded) {
+    return <p>loading...</p>;
+  }
+
   return (
     <div>
-      <h1>Add Product</h1>
+      <h1>Edit Product</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="productName">
           <Form.Label>Name</Form.Label>
@@ -81,6 +89,7 @@ const AddProductPage = () => {
             type="text"
             placeholder="Enter product name"
             {...register('name')}
+            value={productForm?.name}
             isInvalid={!!productFormErrors.name}
             onChange={(e) =>
               onChangeInput(e.target.name as keyof Product, e.target.value)
@@ -116,7 +125,6 @@ const AddProductPage = () => {
               onChangeInput(e.target.name as keyof Product, e.target.value)
             }
           >
-            <option value="">Select product type</option>
             {productTypes.map((productType: ProductType) => (
               <option key={productType.id} value={productType.id}>
                 {productType.name}
@@ -151,4 +159,4 @@ const AddProductPage = () => {
   );
 };
 
-export default AddProductPage;
+export default EditProductPage;

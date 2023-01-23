@@ -13,8 +13,6 @@ const ProductsPage = () => {
   const dispatch = useDispatch();
   const products = useSelector((store: any) => store.productsReducer.products);
 
-  console.log('products', products);
-
   useEffect(() => {
     dispatch(getProducts());
     dispatch(clearState());
@@ -33,6 +31,7 @@ const ProductsPage = () => {
               <th>Price</th>
               <th>Type</th>
               <th>Status</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -42,6 +41,17 @@ const ProductsPage = () => {
                 <td>${(Math.round(product.price * 100) / 100).toFixed(2)}</td>
                 <td>{product.productType.name}</td>
                 <td>{product.isActive ? 'Active' : 'Inactive'}</td>
+                <td>
+                  <Button
+                    variant="primary"
+                    onClick={() => navigate('/edit-product/' + product.id)}
+                  >
+                    Edit
+                  </Button>
+                  <Button variant="danger" onClick={() => navigate('/')}>
+                    Delete
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>

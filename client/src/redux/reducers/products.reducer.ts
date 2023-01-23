@@ -1,9 +1,13 @@
 import {
-  CLEAR_STATE,
+  GET_PRODUCT,
   GET_PRODUCTS,
   GET_PRODUCTS_ERROR,
+  GET_PRODUCT_ERROR,
   POST_PRODUCT,
   POST_PRODUCT_ERROR,
+  PUT_PRODUCT,
+  PUT_PRODUCT_ERROR,
+  CLEAR_STATE,
 } from '../../global/constants';
 import { Action } from '../../global/types';
 
@@ -12,6 +16,7 @@ const INITIAL_STATE = {
   productsError: '',
   product: {},
   productError: '',
+  isProductLoaded: false,
   isProductCreated: false,
   isProductUpdated: false,
   isProductDeleted: false,
@@ -29,6 +34,17 @@ const reducer = (state = INITIAL_STATE, action: Action) => {
         ...state,
         productsError: action.payload,
       };
+    case GET_PRODUCT:
+      return {
+        ...state,
+        product: action.payload,
+        isProductLoaded: true,
+      };
+    case GET_PRODUCT_ERROR:
+      return {
+        ...state,
+        productError: action.payload,
+      };
     case POST_PRODUCT:
       return {
         ...state,
@@ -41,10 +57,23 @@ const reducer = (state = INITIAL_STATE, action: Action) => {
         productError: action.payload,
         isProductCreated: false,
       };
+    case PUT_PRODUCT:
+      return {
+        ...state,
+        product: action.payload,
+        isProductUpdated: true,
+      };
+    case PUT_PRODUCT_ERROR:
+      return {
+        ...state,
+        productError: action.payload,
+        isProductUpdated: false,
+      };
     case CLEAR_STATE:
       return {
         ...state,
         product: {},
+        isProductLoaded: false,
         isProductCreated: false,
         isProductUpdated: false,
         isProductDeleted: false,
