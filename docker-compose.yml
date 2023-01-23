@@ -15,6 +15,11 @@ services:
       - "1434:1433"
     volumes:
       - mssql-data:/var/opt/mssql
-
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - webapi
 volumes:
   mssql-data:

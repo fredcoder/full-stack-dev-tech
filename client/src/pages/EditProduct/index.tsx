@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import './index.css';
+import '../../assets/styles/app.css';
 import {
   Product,
   ProductErrors,
@@ -13,6 +13,7 @@ import { getProductTypes } from '../../redux/actions/productTypes.action';
 import { getProduct, putProduct } from '../../redux/actions/products.action';
 import { useMatches, useNavigate } from 'react-router-dom';
 import { PRODUCT_ERRORS_INITIAL_STATE } from '../../global/constants';
+import Loader from '../../components/Loader';
 
 const EditProductPage = () => {
   const navigate = useNavigate();
@@ -76,11 +77,15 @@ const EditProductPage = () => {
   };
 
   if (!isProductLoaded) {
-    return <p>loading...</p>;
+    return (
+      <div className={'loading-box'}>
+        <Loader />
+      </div>
+    );
   }
 
   return (
-    <div>
+    <div className={'product-div'}>
       <h1>Edit Product</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="productName">
@@ -147,13 +152,15 @@ const EditProductPage = () => {
           />
         </Form.Group>
 
-        <Button variant="secondary" onClick={() => navigate('/')}>
-          Cancel
-        </Button>
+        <Form.Group className="buttons-box">
+          <Button variant="secondary" onClick={() => navigate('/')}>
+            Cancel
+          </Button>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form.Group>
       </Form>
     </div>
   );

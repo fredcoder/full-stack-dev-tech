@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import './index.css';
+import '../../assets/styles/app.css';
 import {
   Product,
   ProductErrors,
@@ -72,7 +72,7 @@ const AddProductPage = () => {
   };
 
   return (
-    <div>
+    <div className={'product-div'}>
       <h1>Add Product</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="productName">
@@ -138,14 +138,15 @@ const AddProductPage = () => {
             }}
           />
         </Form.Group>
+        <Form.Group className="buttons-box">
+          <Button variant="secondary" onClick={() => navigate('/')}>
+            Cancel
+          </Button>
 
-        <Button variant="secondary" onClick={() => navigate('/')}>
-          Cancel
-        </Button>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form.Group>
       </Form>
     </div>
   );

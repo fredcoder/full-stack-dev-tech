@@ -7,10 +7,13 @@ import {
   getProducts,
 } from '../../redux/actions/products.action';
 import Table from 'react-bootstrap/Table';
-import './index.css';
+import '../../assets/styles/app.css';
 import { Product } from '../../global/types';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import DeleteIcon from '../../assets/images/delete-icon.png';
+import EditIcon from '../../assets/images/edit-icon.png';
+import AddIcon from '../../assets/images/add-icon.png';
 
 const ProductsPage = () => {
   const navigate = useNavigate();
@@ -40,10 +43,17 @@ const ProductsPage = () => {
   };
 
   return (
-    <div>
-      <div>
+    <>
+      <div className={'main-div'}>
         <h1>Products</h1>
-        <Button onClick={() => navigate('/add-product')}>Add Product</Button>
+        <Button
+          variant="default"
+          className={'icon-button'}
+          onClick={() => navigate('/add-product')}
+        >
+          <img width="30" src={AddIcon} alt="Add" />
+          Add Product
+        </Button>
         <Link to={`/AddProduct`} />
         <Table responsive="sm">
           <thead>
@@ -64,16 +74,18 @@ const ProductsPage = () => {
                 <td>{product.isActive ? 'Active' : 'Inactive'}</td>
                 <td>
                   <Button
-                    variant="primary"
+                    variant="default"
+                    className={'icon-button'}
                     onClick={() => navigate('/edit-product/' + product.id)}
                   >
-                    Edit
+                    <img width="30" src={EditIcon} alt="Delete" />
                   </Button>
                   <Button
-                    variant="danger"
+                    variant="default"
+                    className={'icon-button'}
                     onClick={() => toggleDeletingModal(product.id)}
                   >
-                    Delete
+                    <img width="30" src={DeleteIcon} alt="Delete" />
                   </Button>
                 </td>
               </tr>
@@ -95,7 +107,7 @@ const ProductsPage = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 };
 
